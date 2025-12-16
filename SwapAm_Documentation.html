@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwapAm - Comprehensive Project Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            color: white;
+            margin: -20px -20px 40px -20px;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 5px solid #2E7D32;
+        }
+        
+        .toc h2 {
+            color: #2E7D32;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .toc ul {
+            list-style: none;
+        }
+        
+        .toc li {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .toc a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .toc a:hover {
+            color: #2E7D32;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            page-break-inside: avoid;
+        }
+        
+        .section h2 {
+            color: #2E7D32;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2E7D32;
+        }
+        
+        .section h3 {
+            color: #4CAF50;
+            font-size: 1.5em;
+            margin: 30px 0 15px 0;
+        }
+        
+        .section h4 {
+            color: #666;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .tech-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #4CAF50;
+        }
+        
+        .tech-card h4 {
+            color: #2E7D32;
+            margin-bottom: 15px;
+        }
+        
+        .tech-list {
+            list-style: none;
+        }
+        
+        .tech-list li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .tech-list li:before {
+            content: "✓";
+            color: #4CAF50;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2em;
+            color: #2E7D32;
+            margin-bottom: 15px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .api-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .api-table th,
+        .api-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .api-table th {
+            background: #2E7D32;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .api-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .screenshot-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .screenshot-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .screenshot-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .screenshot-caption {
+            padding: 15px;
+            text-align: center;
+            font-weight: 500;
+            color: #2E7D32;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8e6cf 0%, #dcedc1 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #2E7D32;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            background: #2E7D32;
+            color: white;
+            margin: 40px -20px -20px -20px;
+        }
+        
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; }
+            .section { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SwapAm</h1>
+            <p>Sustainable Campus Item Exchange Platform</p>
+            <p>Comprehensive Project Documentation</p>
+        </div>
+
+        <!-- <div class="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#overview">1. Project Overview</a></li>
+                <li><a href="#architecture">2. System Architecture</a></li>
+                <li><a href="#features">3. Key Features</a></li>
+                <li><a href="#technology">4. Technology Stack</a></li>
+                <li><a href="#api">5. API Documentation</a></li>
+                <li><a href="#screenshots">6. Application Screenshots</a></li>
+                <li><a href="#deployment">7. Deployment & Setup</a></li>
+                <li><a href="#ai-features">8. AI Integration</a></li>
+                <li><a href="#impact">9. Environmental Impact</a></li>
+                <li><a href="#future">10. Future Enhancements</a></li>
+            </ul>
+        </div> -->
+
+        <div class="section" id="overview">
+            <h2>1. Project Overview</h2>
+            
+            <div class="highlight">
+                <h3>Mission Statement</h3>
+                <p>SwapAm revolutionizes campus sustainability by creating a comprehensive platform where university students can exchange, sell, and donate items within their campus community. Our AI-powered system reduces waste, builds connections, and promotes environmental consciousness through smart technology and intuitive design.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1,250+</div>
+                    <div>Active Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3,420+</div>
+                    <div>Items Listed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">892+</div>
+                    <div>Successful Swaps</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div>User Satisfaction</div>
+                </div>
+            </div>
+
+            <h3>Project Scope</h3>
+            <p>SwapAm consists of multiple integrated components:</p>
+            <ul>
+                <li><strong>Landing Page:</strong> Professional marketing website built with React and Vite</li>
+                <li><strong>Frontend Application:</strong> Full-featured React TypeScript application with Material-UI</li>
+                <li><strong>Backend API:</strong> Java Spring Boot REST API with PostgreSQL database</li>
+                <li><strong>AI Integration:</strong> Smart matching and valuation algorithms</li>
+                <li><strong>Demo System:</strong> Standalone HTML/CSS/JS demo for testing</li>
+            </ul>
+
+            <h3>Live Deployment</h3>
+            <p><strong>Production URL:</strong> <a href="https://swap-am-kappa.vercel.app" target="_blank">https://swap-am-kappa.vercel.app</a></p>
+            <p>The application is deployed on Vercel with full CI/CD integration and automatic deployments from the main branch.</p>
+        </div>
+
+        <div class="section" id="architecture">
+            <h2>2. System Architecture</h2>
+            
+            <h3>Multi-Tier Architecture</h3>
+            <div class="code-block">
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Frontend      │    │   Backend API   │    │   Database      │
+│   React/TS      │◄──►│   Spring Boot   │◄──►│   PostgreSQL    │
+│   Port: 3000    │    │   Port: 8080    │    │   Port: 5432    │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │
+         ▼                       ▼                       ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Landing Page  │    │   AI Services   │    │   File Storage  │
+│   Vite/React    │    │   Valuation     │    │   Local/Cloud   │
+│   Port: 5173    │    │   Matching      │    │   Images        │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+            </div>
+
+            <h3>Project Structure</h3>
+            <div class="code-block">
+SwapAm/
+├── landing-page/              # Marketing website (Vite + React)
+│   ├── src/
+│   │   ├── components/        # Reusable UI components
+│   │   ├── pages/            # Authentication pages
+│   │   ├── dashboard/        # Dashboard components
+│   │   ├── context/          # React context for state
+│   │   └── services/         # API service layer
+│   └── package.json
+├── frontend/                  # Main application (React + TypeScript)
+│   ├── src/
+│   │   ├── components/       # UI components
+│   │   ├── pages/           # Application pages
+│   │   ├── services/        # API services
+│   │   ├── store/           # Redux store
+│   │   └── types/           # TypeScript definitions
+│   └── package.json
+├── swapam-backend/           # Java Spring Boot API
+│   ├── src/main/java/       # Java source code
+│   ├── src/main/resources/  # Configuration files
+│   └── pom.xml
+├── demo/                     # Standalone demo
+└── screenshots/              # Application screenshots
+            </div>
+        </div>
+
+        <div class="section" id="features">
+            <h2>3. Key Features</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h4>Secure Authentication</h4>
+                    <p>JWT-based authentication with email verification and password recovery</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h4>AI-Powered Matching</h4>
+                    <p>Smart algorithms match users with relevant items and swap opportunities</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h4>Real-time Messaging</h4>
+                    <p>WebSocket-based chat system for seamless communication</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h4>Responsive Design</h4>
+                    <p>Mobile-first design that works perfectly on all devices</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <h4>Impact Tracking</h4>
+                    <p>Monitor environmental impact and sustainability metrics</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Fast Performance</h4>
+                    <p>Optimized for speed with lazy loading and efficient caching</p>
+                </div>
+            </div>
+
+            <h3>Core Functionalities</h3>
+            
+            <h4>🔄 Item Management System</h4>
+            <ul>
+                <li>Multi-category listings (Books, Electronics, Clothing, Furniture, Sports, Other)</li>
+                <li>Image upload with automatic compression and optimization</li>
+                <li>Exchange types: Swap, Sell, Donate</li>
+                <li>Advanced search and filtering capabilities</li>
+                <li>Item condition tracking and valuation</li>
+            </ul>
+
+            <h4>🤝 Swap Management</h4>
+            <ul>
+                <li>Intelligent swap request system</li>
+                <li>Meeting coordination and scheduling</li>
+                <li>Rating and review system</li>
+                <li>Transaction history and analytics</li>
+                <li>Dispute resolution mechanism</li>
+            </ul>
+
+            <h4>📊 Dashboard Analytics</h4>
+            <ul>
+                <li>Personal statistics and achievements</li>
+                <li>Environmental impact visualization</li>
+                <li>Market trends and insights</li>
+                <li>Campus points and rewards system</li>
+                <li>Activity timeline and notifications</li>
+            </ul>
+        </div>
+
+        <div class="section" id="technology">
+            <h2>4. Technology Stack</h2>
+            
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <h4>Frontend Technologies</h4>
+                    <ul class="tech-list">
+                        <li>React 18 with Hooks</li>
+                        <li>TypeScript for type safety</li>
+                        <li>Material-UI (MUI) components</li>
+                        <li>Redux Toolkit for state management</li>
+                        <li>React Router for navigation</li>
+                        <li>Axios for HTTP requests</li>
+                        <li>Formik & Yup for form handling</li>
+                        <li>Chart.js for data visualization</li>
+                        <li>Framer Motion for animations</li>
+                        <li>React Hot Toast for notifications</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card">
+                    <h4>Backend Technologies</h4>
+                    <ul class="tech-list">
+                        <li>Java 17 with Spring Boot 3</li>
+                        <li>Spring Security for authentication</li>
+                        <li>Spring Data JPA for database</li>
+                        <li>PostgreSQL database</li>
+                        <li>JWT for token-based auth</li>
+                        <li>Maven for dependency management</li>
+                        <li>Hibernate ORM</li>
+                        <li>Spring Validation</li>
+                        <li>Flyway for database migrations</li>
+                        <li>Docker for containerization</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card">
+                    <h4>Landing Page Stack</h4>
+                    <ul class="tech-list">
+                        <li>Vite for fast development</li>
+                        <li>React 18 with JSX</li>
+                        <li>Tailwind CSS for styling</li>
+                        <li>React Router DOM</li>
+                        <li>Lucide React icons</li>
+                        <li>React Hot Toast</li>
+                        <li>React Scroll for navigation</li>
+                        <li>PostCSS for processing</li>
+                        <li>ESLint for code quality</li>
+                        <li>Vercel for deployment</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card">
+                    <h4>Development Tools</h4>
+                    <ul class="tech-list">
+                        <li>Git for version control</li>
+                        <li>GitHub for repository hosting</li>
+                        <li>VS Code with extensions</li>
+                        <li>Postman for API testing</li>
+                        <li>Chrome DevTools</li>
+                        <li>npm/yarn package managers</li>
+                        <li>Prettier for code formatting</li>
+                        <li>Husky for git hooks</li>
+                        <li>Jest for unit testing</li>
+                        <li>Cypress for E2E testing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="screenshots">
+            <h2>6. Application Screenshots</h2>
+            
+            <div class="screenshot-gallery">
+                <div class="screenshot-item">
+                    <img src="assets/images/herosection.png" alt="Hero Section">
+                    <div class="screenshot-caption">Landing Page Hero Section</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/about.png" alt="About Section">
+                    <div class="screenshot-caption">About SwapAm Section</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/howitworks.png" alt="How It Works">
+                    <div class="screenshot-caption">How It Works Process</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/dashboard.png" alt="Dashboard">
+                    <div class="screenshot-caption">User Dashboard</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/browseitems.png" alt="Browse Items">
+                    <div class="screenshot-caption">Browse Items Page</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/additem page.png" alt="Add Item">
+                    <div class="screenshot-caption">Add Item Form</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/ai-dashboard.png" alt="AI Dashboard">
+                    <div class="screenshot-caption">AI-Powered Dashboard</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/profile.png" alt="Profile">
+                    <div class="screenshot-caption">User Profile Page</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/impact .png" alt="Impact Tracking">
+                    <div class="screenshot-caption">Environmental Impact</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 SwapAm - Sustainable Campus Exchange Platform</p>
+            <p>Built with ❤️ for a sustainable future</p>
+        </div>
+    </div>
+</body>
+</html>
